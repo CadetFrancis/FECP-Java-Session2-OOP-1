@@ -1,8 +1,6 @@
+
 Name: Francis Aldrin Belmes
 
-Project Title: Build a Java Bank Account System
+Project Title: Lab 2: Unit Testing
 
 ![image info](./output.png)
-![image info](./output1.png)
-![image info](./output2.png)
-
