@@ -40,7 +40,7 @@ public class BankSystem {
                     }
                     break;
                 case 4:
-                    deposit(5000);
+                    deposit();
                     System.out.print("Would you like to return to the menu? (yes/no):");
                     returnToMenu = s.next().toLowerCase();
                     if (returnToMenu.equals("yes")){
@@ -64,7 +64,7 @@ public class BankSystem {
         }
     }
 
-    public static void showMenu() {
+    private static void showMenu() {
         System.out.println("\n*** Bank System Menu ***");
         System.out.println("1. Create Account");
         System.out.println("2. View All Accounts");
@@ -75,7 +75,7 @@ public class BankSystem {
         System.out.print("Enter your choice: ");
     }
 
-    public static int getValidChoice() {
+    private static int getValidChoice() {
         while (!s.hasNextInt()) {
             System.out.println("Invalid input. Please enter a number between 1 and 6.");
             s.next();
@@ -83,7 +83,7 @@ public class BankSystem {
         return s.nextInt();
     }
 
-    public static void createAccount() {
+    private static void createAccount() {
         s.nextLine();
 
         System.out.print("Enter Account Number: ");
@@ -113,7 +113,7 @@ public class BankSystem {
         System.out.println("Account created successfully!");
     }
 
-    public static void viewAllAccounts() {
+    private static void viewAllAccounts() {
         if (accounts.isEmpty()) {
             System.out.println("No accounts available.");
         } else {
@@ -123,7 +123,7 @@ public class BankSystem {
         }
     }
 
-    public static void checkBalance() {
+    private static void checkBalance() {
         System.out.print("Enter Account Number: ");
         String accountNumber = s.next();
         BankAccount account = findAccount(accountNumber);
@@ -135,7 +135,7 @@ public class BankSystem {
         }
     }
 
-    public static double deposit(int i) {
+    private static void deposit() {
         System.out.print("Enter Account Number: ");
         String accountNumber = s.next();
         BankAccount account = findAccount(accountNumber);
@@ -148,14 +148,12 @@ public class BankSystem {
             }
             double amount = s.nextDouble();
             account.deposit(amount);
-            return amount;
         } else {
             System.out.println("Account not found.");
         }
-        return 0;
     }
 
-    public static void withdraw() {
+    private static void withdraw() {
         System.out.print("Enter Account Number: ");
         String accountNumber = s.next();
         BankAccount account = findAccount(accountNumber);
@@ -173,7 +171,7 @@ public class BankSystem {
         }
     }
 
-    public static BankAccount findAccount(String accountNumber) {
+    private static BankAccount findAccount(String accountNumber) {
         for (BankAccount account : accounts) {
             if (account.getAccountNumber().equals(accountNumber)) {
                 return account;

@@ -1,32 +1,30 @@
 package org.example;
 
 public class BankAccount {
-    private final String accountNumber;
-    private final String accountHolderName;
-    private static double availableBalance;
+    private String accountNumber;
+    private String accountHolderName;
+    private double availableBalance;
 
     public BankAccount(String accountNumber, String accountHolderName, double initialDeposit) {
         this.accountNumber = accountNumber;
         this.accountHolderName = accountHolderName;
         if (initialDeposit >= 0) {
-            availableBalance = initialDeposit;
+            this.availableBalance = initialDeposit;
         } else {
-            availableBalance = 0;
+            this.availableBalance = 0;  // Negative deposits are not allowed.
         }
     }
 
-
-    public static double deposit(double amount) {
+    public void deposit(double amount) {
         if (amount > 0) {
             availableBalance += amount;
             System.out.println("Deposited $" + amount + ". New Balance: $" + availableBalance);
         } else {
             System.out.println("Deposit amount must be positive.");
         }
-        return availableBalance;
     }
 
-    public static double withdraw(double amount) {
+    public void withdraw(double amount) {
         if (amount > 0) {
             if (availableBalance >= amount) {
                 availableBalance -= amount;
@@ -37,7 +35,6 @@ public class BankAccount {
         } else {
             System.out.println("Withdrawal amount must be positive.");
         }
-        return availableBalance;
     }
 
     public void displayInfo() {
@@ -50,5 +47,4 @@ public class BankAccount {
     public String getAccountNumber() {
         return accountNumber;
     }
-    public double getAvailableBalance() {return availableBalance;}
 }
